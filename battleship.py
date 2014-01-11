@@ -4,6 +4,16 @@ from random import randint
 
 
 
+def ask_for_digit(message):
+    valid = False
+    while valid==False:
+        input = raw_input(message)
+        if input.isdigit():
+            valid = True
+        else:
+            print "Please enter a digit"
+    return input
+
 
 def create_board(amount):
     board = []
@@ -57,7 +67,6 @@ def main():
     amount_of_ships =2
     cheat = True
 
-
     board = create_board(5)
 
     board_row_size = len(board) - 1
@@ -75,8 +84,8 @@ def main():
 
     for turn in range_list:
 
-        guess_row = int(raw_input("Guess Row:")) -1
-        guess_col = int(raw_input("Guess Col:")) -1
+        guess_row = int(ask_for_digit("Guess Row:"))
+        guess_col = int(ask_for_digit("Guess Col:"))
 
         ship = validate_ships(ship_list,guess_row,guess_col)
 
